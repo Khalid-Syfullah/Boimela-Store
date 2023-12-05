@@ -1,0 +1,57 @@
+.wrapper {
+  overflow: hidden;
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  background-color: var(--yellow);
+}
+
+.line {
+  width: 170px;
+  height: 1px;
+  background: var(--secondary);
+  margin-bottom: 20px;
+}
+
+.slide {
+  position: relative;
+  width: 30vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  background: #fff;
+  transition: 0.3s all ease-in-out;
+}
+
+.img {
+  width: 100%;
+  min-width: 30vw;
+  transition: 0.3s all ease-in-out;
+}
+
+.slide:hover .img {
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+.text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -2;
+}
+
+.slide:hover .text {
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}

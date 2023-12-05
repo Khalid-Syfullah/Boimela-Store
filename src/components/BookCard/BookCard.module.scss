@@ -1,0 +1,39 @@
+.img {
+  min-height: 150px;
+  aspect-ratio: 26/39 !important;
+  border-radius: 15px;
+  transition: 0.3s all ease-in-out;
+}
+.img:hover {
+  cursor: pointer;
+  scale: 1.02;
+  transition: 0.3s all ease-in-out;
+}
+.wrapper {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  margin: 10px;
+}
+.link {
+  display: block;
+  text-align: center;
+  padding-top: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  color: var(--dark) !important;
+  transition: 0.3s all ease-in-out;
+}
+
+.link:hover {
+  color: var(--primary) !important;
+  transition: 0.3s all ease-in-out;
+}
+
+@media screen and (max-width: 767px) {
+  .img {
+    height: 150px;
+  }
+}

@@ -1,0 +1,135 @@
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "react-toastify/dist/ReactToastify.css";
+import { LoginPage, DashboardPage } from "./views";
+import { ToastContainer } from "react-toastify";
+import PrivateOutlet from "./utils/PrivateOutlet";
+import PlayerListPage from "./views/PlayerListPage/PlayerListPage";
+import { useEffect } from "react";
+import setAuthToken from "./utils/setAuthToken";
+import PlayerDetailsPage from "./views/PlayerDetailsPage/PlayerDetailsPage";
+import TeamListPage from "./views/TeamListPage/TeamListPage";
+import TeamDetailsPage from "./views/TeamDetailsPage/TeamDetailsPage";
+import AddTeamPage from "./views/AddTeamPage/AddTeamPage";
+import EditTeamPage from "./views/EditTeamPage/EditTeamPage";
+import EditPlayerPage from "./views/EditPlayerPage/EditPlayerPage";
+import { connect } from "react-redux";
+import { getRefreshToken } from "./actions/Dashboard.action";
+import CategoryPage from "./views/CategoryPage/CategoryPage";
+import AddCategory from "./views/AddCategory/AddCategory";
+import "./App.css";
+import SubCategoryPage from "./views/SubCategoryPage/SubCategoryPage";
+import AddSubCategory from "./views/AddSubCategory/AddSubCategory";
+import AuthorPage from "./views/AuthorPage/AuthorPage";
+import AddAuthorPage from "./views/AddAuthorPage/AddAuthorPage";
+import PublisherPage from "./views/PublisherPage/PublisherPage";
+import AddPublisherPage from "./views/AddPublisherPage/AddPublisherPage";
+import BookPage from "./views/BookPage/BookPage";
+import AddBookPage from "./views/AddBookPage/AddBookPage";
+import SeriesPage from "./views/SeriesPage/SeriesPage";
+import AddSeriesPage from "./views/AddSeriesPage/AddSeriesPage";
+import SeriesDetailsPage from "./views/SeriesDetailsPage/SeriesDetailsPage";
+import CollectionPage from "./views/CollectionPage/CollectionPage";
+import CollectionDetailsPage from "./views/CollectionDetailsPage/CollectionDetailsPage";
+import TypesPage from "./views/TypesPage/TypesPage";
+import FeatuedDetailsPage from "./views/FeatuedDetailsPage/FeatuedDetailsPage";
+import TopAuthorPage from "./views/TopAuthorPage/TopAuthorPage";
+import TopPublisherPage from "./views/TopPublisherPage/TopPublisherPage";
+import LandingPage from "./views/LandingPage/LandingPage";
+import AuthorsV2Page from "./views/AuthorsV2Page/AuthorsV2Page";
+import AuthorsDetailsV2Page from "./views/AuthorsDetailsV2Page/AuthorsDetailsV2Page";
+import PublishersV2Page from "./views/PublishersV2Page/PublishersV2Page";
+import PublishersDetailsV2Page from "./views/PublishersDetailsV2Page/PublishersDetailsV2Page";
+import CategoryV2Page from "./views/CategoryV2Page/CategoryV2Page";
+import CategoryDetailsV2Page from "./views/CategoryDetailsV2Page/CategoryDetailsV2Page";
+import BookDetailsV2Page from "./views/BookDetailsV2Page/BookDetailsV2Page";
+import ReadPage from "./views/ReadPage/ReadPage";
+
+function App({ getRefreshToken }) {
+  useEffect(() => {
+    if (localStorage.getItem("token_book")) {
+      setAuthToken(localStorage.getItem("token_book"));
+    }
+    getRefreshToken();
+  }, [getRefreshToken]);
+
+  return (
+    <>
+      <ToastContainer newestOnTop theme="dark" />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/authors" element={<AuthorsV2Page />} />
+          <Route path="/publishers" element={<PublishersV2Page />} />
+          <Route path="/categories" element={<CategoryV2Page />} />
+          <Route path="/categories/:id" element={<CategoryDetailsV2Page />} />
+          <Route path="/book/:id" element={<BookDetailsV2Page />} />
+          <Route path="/publishers/:id" element={<PublishersDetailsV2Page />} />
+          <Route path="/authors/:id" element={<AuthorsDetailsV2Page />} />
+          <Route path="/admin/login" element={<LoginPage />} />
+
+          <Route path="/*" element={<PrivateOutlet />}>
+            <>
+              <Route path="dashboard" element={<DashboardPage />} />
+              {/* <Route path="dashboard" element={<BookPage />} /> */}
+              <Route path="read/:id" element={<ReadPage />} />
+              <Route path="books" element={<BookPage />} />
+              <Route path="books/add" element={<AddBookPage />} />
+              <Route path="category" element={<CategoryPage />} />
+              <Route path="collection" element={<CollectionPage />} />
+              <Route path="featured" element={<TypesPage />} />
+              <Route path="series" element={<SeriesPage />} />
+              <Route path="author" element={<AuthorPage />} />
+              <Route path="publisher" element={<PublisherPage />} />
+              <Route path="author/add" element={<AddAuthorPage />} />
+              <Route path="publisher/add" element={<AddPublisherPage />} />
+              <Route path="author/:id/edit" element={<AddAuthorPage edit />} />
+              <Route path="series/add" element={<AddSeriesPage />} />
+              <Route path="books/:id/edit" element={<AddBookPage edit />} />
+              <Route
+                path="publisher/:id/edit"
+                element={<AddPublisherPage edit />}
+              />
+              <Route path="category/add" element={<AddCategory />} />
+              <Route
+                path="category/:id/edit"
+                element={<AddCategory edit={true} />}
+              />
+              <Route path="category/:catId" element={<SubCategoryPage />} />
+              <Route path="series/:id" element={<SeriesDetailsPage />} />
+              <Route
+                path="collection/:id"
+                element={<CollectionDetailsPage />}
+              />
+              <Route path="featured/:id" element={<FeatuedDetailsPage />} />
+              <Route path="popularAuthor" element={<TopAuthorPage />} />
+              <Route path="topPublisher" element={<TopPublisherPage />} />
+              <Route
+                path="series/:id/edit"
+                element={<AddSeriesPage edit={true} />}
+              />
+              <Route
+                path="subcategory/add/:catId"
+                element={<AddSubCategory />}
+              />
+              <Route
+                path="subcategory/:id/edit"
+                element={<AddSubCategory edit={true} />}
+              />
+              <Route path="players" element={<PlayerListPage />} />
+              <Route path="players/:id/edit" element={<EditPlayerPage />} />
+              <Route path="players/:id" element={<PlayerDetailsPage />} />
+              <Route path="team" element={<TeamListPage />} />
+              <Route path="team/add-team" element={<AddTeamPage />} />
+              <Route path="team/:id/edit" element={<EditTeamPage />} />
+              <Route path="team/:id" element={<TeamDetailsPage />} />
+            </>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+}
+
+export default connect(null, { getRefreshToken })(App);

@@ -1,0 +1,12 @@
+.img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.link {
+  transition: 0.3s all ease-in-out;
+}
+.link:hover {
+  color: var(--primary) !important;
+  transition: 0.3s all ease-in-out;
+}
