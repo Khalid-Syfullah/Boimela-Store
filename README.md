@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# Boimela Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web storefront and admin panel for **Boimela**, a Bangla e-book platform. Readers browse books by category, author and publisher and read EPUB books right in the browser. Admins manage the whole catalog from a dashboard.
 
-## Available Scripts
+Boimela started as my B.Sc. thesis at RUET ([thesis book](https://drive.google.com/file/d/149zs7FkKbIcUSxSqJXVpQD0_5V0MFOzO/view?usp=sharing)). This repository is the web front end; the other parts are:
 
-In the project directory, you can run:
+- [Boimela](https://github.com/Khalid-Syfullah/Boimela): Android EPUB3 reader app (Java, MVVM)
+- [Boimela-Backend](https://github.com/Khalid-Syfullah/Boimela-Backend): Node.js REST API that this store talks to
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Storefront
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Landing page with a hero banner and carousels for best sellers, our picks, popular books and new arrivals
+- Browse pages for categories, authors and publishers, each with its own detail page, plus a page for every book
+- Bangla interface: Bangla shelf and collection names (জীবনী, সায়েন্স ফিকশন, বেস্টসেলার …) and Bangla numerals
+- In-browser EPUB reader with table of contents and a "page X of Y in chapter" indicator, for signed-in users
 
-### `npm test`
+### Admin panel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Sign in at `/admin/login`; every admin route is protected
+- Dashboard with counts of books, authors, publishers and users, and the top books, authors and publishers
+- Add, edit and list books (cover image, EPUB file and audio file), authors, publishers, categories and sub-categories, series, collections and featured lists
+- Pick the top authors and top publishers shown on the store
+- JWT access tokens with automatic refresh: a 401 response refreshes the token and retries, or signs the admin out
 
-### `npm run build`
+## Tech stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Area | Tools |
+| --- | --- |
+| UI | React 17 (Create React App), React Router 6 |
+| State and data | Redux, Redux Thunk, Axios |
+| Components and styling | Mantine, React Bootstrap, Bootstrap 5, SCSS modules |
+| Forms | Formik, Yup, Mantine Form |
+| Reading | react-reader (epub.js) |
+| Extras | react-slick carousels, react-toastify notifications, Moment |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+src/
+├─ views/        pages (storefront, reader and admin screens)
+├─ components/   reusable sections, lists, cards and forms
+├─ actions/      API calls as Redux Thunk actions
+├─ reducers/     Redux state for auth, books, authors, publishers, categories, series, collections
+├─ store/        Redux store
+├─ constants/    API base URL, shelves and collections
+└─ utils/        auth token helpers, protected routes, Bangla numerals
+```
 
-### `npm run eject`
+## Getting started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+You need Node.js 16 (the project uses `node-sass` 7, which does not build on newer Node versions).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The store opens at <http://localhost:3000>.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The API address is set in `src/constants/URL.js`. With `PROD = true` the store uses the live API at `https://api.boimelafoundation.com`; set it to `false` to use a local [Boimela-Backend](https://github.com/Khalid-Syfullah/Boimela-Backend) on `http://localhost:5002`.
 
-## Learn More
+To make a production build in `build/`:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Author
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Md Khalid Syfullah**: [GitHub](https://github.com/Khalid-Syfullah) · [LinkedIn](https://linkedin.com/in/khalid-syfullah)
