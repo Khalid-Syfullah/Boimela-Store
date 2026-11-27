@@ -7,6 +7,62 @@ Boimela started as my B.Sc. thesis at RUET ([thesis book](https://drive.google.c
 - [Boimela](https://github.com/Khalid-Syfullah/Boimela): Android EPUB3 reader app (Java, MVVM)
 - [Boimela-Backend](https://github.com/Khalid-Syfullah/Boimela-Backend): Node.js REST API that this store talks to
 
+## Screenshots
+
+Screens from a local run with sample data: classic Bangla titles, generated covers and a short demo EPUB.
+
+### Storefront
+
+<table>
+  <tr>
+    <td align="center" valign="top" rowspan="3">
+      <img src="docs/screenshots/01-storefront-home.png" width="360" alt="Storefront home page"><br>
+      <b>Home</b><br><sub>Featured carousel, best sellers, picks, popular and new books</sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/02-category-books.png" width="440" alt="Category page"><br>
+      <b>Category</b><br><sub>Novels with ratings and Bangla review counts</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/04-book-detail.png" width="440" alt="Book detail page"><br>
+      <b>Book page</b><br><sub>Cover, author, edition, rating and Read eBook</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/05-epub-reader.png" width="440" alt="EPUB reader"><br>
+      <b>EPUB reader</b><br><sub>Two-page spread with chapter progress</sub>
+    </td>
+  </tr>
+</table>
+
+### Admin panel
+
+<table>
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/06-admin-dashboard.png" width="420" alt="Admin dashboard"><br>
+      <b>Dashboard</b><br><sub>Counts of books, authors, publishers and users</sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/07-admin-books.png" width="420" alt="Admin books list"><br>
+      <b>Books</b><br><sub>Search, covers, edit and delete</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/08-admin-add-book.png" width="420" alt="Add book form"><br>
+      <b>Add a book</b><br><sub>Details plus cover, EPUB and audio uploads</sub>
+    </td>
+    <td align="center" valign="top">
+      <img src="docs/screenshots/03-authors.png" width="420" alt="Authors page"><br>
+      <b>Authors (storefront)</b><br><sub>Author grid</sub>
+    </td>
+  </tr>
+</table>
+
 ## Features
 
 ### Storefront
